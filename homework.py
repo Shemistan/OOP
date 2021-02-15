@@ -2,7 +2,6 @@ import datetime as dt
 
 
 class Record:
-
     def __init__(self, amount, comment, date=dt.datetime.now()):
         self.amount = amount
         self.comment = comment
@@ -19,7 +18,6 @@ class Record:
 
 
 class Calculator:
-
     def __init__(self, limit):
         self.limit = limit
         self.records = []
@@ -41,7 +39,6 @@ class Calculator:
         self.today = self.today.date()
         return self.get_one_day_stats()
 
-
     def get_week_stats(self):
         self.today = dt.datetime.now()
         self.today = self.today.date()
@@ -56,10 +53,9 @@ class Calculator:
     def the_remained(self):
         return abs(self.limit - self.get_today_stats())
 
+
 class CaloriesCalculator(Calculator):
-
     def get_calories_remained(self):
-
         if self.limit > super().get_today_stats():
             return (f'Сегодня можно съесть что-нибудь ещё, но с общей '
                     f'калорийностью не более {self.the_remained()} кКал')
@@ -70,7 +66,6 @@ class CaloriesCalculator(Calculator):
 class CashCalculator(Calculator):
     USD_RATE = 60.0
     EURO_RATE = 70.0
-
     def get_today_cash_remained(self, currency):
         self.currency_list = {}
         self.currency = currency
@@ -94,6 +89,3 @@ class CashCalculator(Calculator):
             return (f'Денег нет, держись: твой долг - '
                     f'{abs(self.currency_list[self.currency])} '
                     f'{self.name_currency[self.currency]}')
-
-
-
