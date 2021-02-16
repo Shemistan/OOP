@@ -61,7 +61,7 @@ class CaloriesCalculator(Calculator):
                     f'ещё, но с общей калорийностью не '
                     f'более {self.the_remained()} кКал')
         else:
-            return f'Хватит есть!'
+            return 'Хватит есть!'
 
 
 class CashCalculator(Calculator):
@@ -90,7 +90,7 @@ class CashCalculator(Calculator):
                     f'{self.currency_list[self.currency]} '
                     f'{self.name_currency[self.currency]}')
         elif self.get_today_status == self.limit:
-            return f'Денег нет, держись'
+            return 'Денег нет, держись'
         else:
             return (f'Денег нет, держись: твой долг - '
                     f'{abs(self.currency_list[self.currency])} '
