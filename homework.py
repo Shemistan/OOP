@@ -39,7 +39,7 @@ class Calculator:
     def weekend(self):
         self.determine_what_day_it_is()
         start_day_of_week = self.today
-        self.a_week =[]
+        self.a_week = []
         self.a_week.append(start_day_of_week)
         for day in range(7):
             start_day_of_week -= dt.timedelta(days=1)
@@ -61,9 +61,6 @@ class Calculator:
 class CaloriesCalculator(Calculator):
     def get_calories_remained(self):
         get_today_status = self.get_today_stats()
-        #Самое не понятное замечание было здесь)))
-        #Как же долго я пытался понять, что от меня требуеться
-        #Надеюсь я правильно понял))
         if self.limit > get_today_status:
             return ('Сегодня можно съесть что-нибудь '
                     'ещё, но с общей калорийностью не '
@@ -95,6 +92,5 @@ class CashCalculator(Calculator):
                     f'{the_remainded} '
                     f'{self.name_currency[currency]}')
 
-        return (f'Денег нет, держись: твой долг - '
-                    f'{abs(the_remainded)} '
-                    f'{self.name_currency[currency]}')
+        return ('Денег нет, держись: твой долг - '
+                f'{abs(the_remainded)} {self.name_currency[currency]}')
