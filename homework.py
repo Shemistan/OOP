@@ -62,7 +62,8 @@ class CashCalculator(Calculator):
         the_remainded = self.calculate_the_remained()
         if the_remainded == 0:
             return 'Денег нет, держись'
-        # Всю ночь голову ломал, другого выхода я не вижу
+        # Всю ночь голову ломал, другого выхода я не вижу.
+        # Только 2 словаря.
         value_currency = {
             'rub': 1,
             'usd': self.USD_RATE,
