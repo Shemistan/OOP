@@ -27,7 +27,6 @@ class Calculator:
     def get_today_stats(self) -> int:
         today = dt.datetime.now()
         today = today.date()
-        get_today_status = 0
         return sum(
             recorded_object.amount for recorded_object in self.records
             if recorded_object.date == today)
