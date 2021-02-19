@@ -62,7 +62,7 @@ class CashCalculator(Calculator):
         the_remainded = self.calculate_the_remained()
         if the_remainded == 0:
             return 'Денег нет, держись'
-
+        # Всю ночь голову ломал, другого выхода я не вижу
         value_currency = {
             'rub': 1,
             'usd': self.USD_RATE,
@@ -74,7 +74,6 @@ class CashCalculator(Calculator):
             'usd': 'USD',
             'eur': 'Euro'
         }
-        
         the_remainded = round((the_remainded / value_currency[currency]), 2)
         if the_remainded > 0:
             return ('На сегодня осталось '
