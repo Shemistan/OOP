@@ -28,10 +28,9 @@ class Calculator:
         today = dt.datetime.now()
         today = today.date()
         get_today_status = 0
-        for recorded_object in self.records:
-            if recorded_object.date == today:
-                get_today_status += recorded_object.amount
-        return get_today_status
+        return sum(
+            recorded_object.amount for recorded_object in self.records
+            if recorded_object.date == today)
 
     def get_week_stats(self) -> int:
         today = dt.datetime.now()
