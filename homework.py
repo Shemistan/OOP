@@ -63,18 +63,15 @@ class CashCalculator(Calculator):
             return 'Денег нет, держись'
 
         name_currency = {
-            'rub': {'value': self.RUB_RATE,
-                    'name': 'руб'},
-            'usd': {'value': self.USD_RATE,
-                    'name': 'USD'},
-            'eur': {'value': self.EURO_RATE,
-                    'name': 'Euro'}
+            'rub': (self.RUB_RATE, 'руб'),
+            'usd': (self.USD_RATE, 'USD'),
+            'eur': (self.EURO_RATE, 'Euro')
         }
 
         the_remainded = (
-            round((the_remainded / name_currency[currency]['value']), 2))
+            round((the_remainded / name_currency[currency][0]), 2))
         if the_remainded > 0:
             return ('На сегодня осталось '
-                    f'{the_remainded} {name_currency[currency]["name"]}')
+                    f'{the_remainded} {name_currency[currency][1]}')
         return ('Денег нет, держись: твой долг - '
-                f'{abs(the_remainded)} {name_currency[currency]["name"]}')
+                f'{abs(the_remainded)} {name_currency[currency][1]}')
