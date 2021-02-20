@@ -55,6 +55,7 @@ class CaloriesCalculator(Calculator):
 class CashCalculator(Calculator):
     USD_RATE = 60.0
     EURO_RATE = 70.0
+    RUB_RATE = 1
 
     def get_today_cash_remained(self, currency) -> str:
         the_remainded = self.calculate_the_remained()
@@ -62,14 +63,17 @@ class CashCalculator(Calculator):
             return 'Денег нет, держись'
 
         name_currency = {
-            'rub': [1, 'руб'],
-            'usd': [self.USD_RATE, 'USD'],
-            'eur': [self.EURO_RATE, 'Euro']
+            'rub': {'value': self.RUB_RATE,
+                    'name': 'руб'},
+            'usd': {'value': self.USD_RATE,
+                    'name': 'USD'},
+            'eur': {'value': self.EURO_RATE,
+                    'name': 'Euro'}
         }
 
-        the_remainded = round((the_remainded / name_currency[currency][0]), 2)
+        the_remainded = round((the_remainded / name_currency[currency]['value']), 2)
         if the_remainded > 0:
             return ('На сегодня осталось '
-                    f'{the_remainded} {name_currency[currency][1]}')
+                    f'{the_remainded} {name_currency[currency]["name"]}')
         return ('Денег нет, держись: твой долг - '
-                f'{abs(the_remainded)} {name_currency[currency][1]}')
+                f'{abs(the_remainded)} {name_currency[currency]["name"]}')
