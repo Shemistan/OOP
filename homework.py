@@ -34,9 +34,10 @@ class Calculator:
     def get_week_stats(self) -> int:
         today = dt.datetime.now()
         today = today.date()
+        week_ago = today - dt.timedelta(days=7)
         return sum(
             recorded_object.amount for recorded_object in self.records
-            if today >= recorded_object.date > (today - dt.timedelta(days=7)))
+            if today >= recorded_object.date > week_ago)
 
     def calculate_the_remained(self) -> int:
         return self.limit - self.get_today_stats()
@@ -67,11 +68,10 @@ class CashCalculator(Calculator):
             'usd': (self.USD_RATE, 'USD'),
             'eur': (self.EURO_RATE, 'Euro')
         }
-
-        the_remainded = (
-            round((the_remainded / name_currency[currency][0]), 2))
+        value, name = name_currency[currency]
+        the_remainded = round((the_remainded / value), 2)
         if the_remainded > 0:
             return ('На сегодня осталось '
-                    f'{the_remainded} {name_currency[currency][1]}')
+                    f'{the_remainded} {name}')
         return ('Денег нет, держись: твой долг - '
-                f'{abs(the_remainded)} {name_currency[currency][1]}')
+                f'{abs(the_remainded)} {name}')
