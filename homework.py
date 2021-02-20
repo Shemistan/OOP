@@ -60,22 +60,16 @@ class CashCalculator(Calculator):
         the_remainded = self.calculate_the_remained()
         if the_remainded == 0:
             return 'Денег нет, держись'
-        # Всю ночь голову ломал, другого выхода я не вижу.
-        # Только 2 словаря.
-        value_currency = {
-            'rub': 1,
-            'usd': self.USD_RATE,
-            'eur': self.EURO_RATE
-        }
 
         name_currency = {
-            'rub': 'руб',
-            'usd': 'USD',
-            'eur': 'Euro'
+            'rub': [1, 'руб'],
+            'usd': [self.USD_RATE, 'USD'],
+            'eur': [self.EURO_RATE, 'Euro']
         }
-        the_remainded = round((the_remainded / value_currency[currency]), 2)
+
+        the_remainded = round((the_remainded / name_currency[currency][0]), 2)
         if the_remainded > 0:
             return ('На сегодня осталось '
-                    f'{the_remainded} {name_currency[currency]}')
+                    f'{the_remainded} {name_currency[currency][1]}')
         return ('Денег нет, держись: твой долг - '
-                f'{abs(the_remainded)} {name_currency[currency]}')
+                f'{abs(the_remainded)} {name_currency[currency][1]}')
