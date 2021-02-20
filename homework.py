@@ -74,5 +74,6 @@ class CashCalculator(Calculator):
         if the_remainded > 0:
             return ('На сегодня осталось '
                     f'{the_remainded} {name}')
+        the_remainded = abs(the_remainded)
         return ('Денег нет, держись: твой долг - '
-                f'{abs(the_remainded)} {name}')
+                f'{the_remainded} {name}')
