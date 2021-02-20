@@ -68,6 +68,7 @@ class CashCalculator(Calculator):
             'usd': (self.USD_RATE, 'USD'),
             'eur': (self.EURO_RATE, 'Euro')
         }
+
         value, name = name_currency[currency]
         the_remainded = round((the_remainded / value), 2)
         if the_remainded > 0:
