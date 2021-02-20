@@ -71,7 +71,8 @@ class CashCalculator(Calculator):
                     'name': 'Euro'}
         }
 
-        the_remainded = round((the_remainded / name_currency[currency]['value']), 2)
+        the_remainded = (
+            round((the_remainded / name_currency[currency]['value']), 2))
         if the_remainded > 0:
             return ('На сегодня осталось '
                     f'{the_remainded} {name_currency[currency]["name"]}')
